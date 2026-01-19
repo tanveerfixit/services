@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Dashboard Hub</title>
+    <!-- Tailwind CSS for modern, utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons for clean, professional iconography -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Animate.css for high-quality, lightweight web animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top left, #f8fafc, #f1f5f9);
+            min-height: 100vh;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            border-color: #3b82f6;
+        }
+
+        /* Initial state for JS-driven entrance animation */
+        .card-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-6">
+
+    <div class="max-w-4xl w-full">
+        <!-- Header Section -->
+        <header class="text-center mb-12 animate__animated animate__fadeInDown">
+            <h1 class="text-4xl font-bold text-slate-900 tracking-tight mb-3">Management Portal</h1>
+            <p class="text-slate-500 text-lg">Select a module to continue to your workspace</p>
+        </header>
+
+        <!-- Navigation Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Daily Closure Button -->
+            <a href="https://your-other-page.com/daily-closure" class="group card-hidden">
+                <div class="glass-card p-8 rounded-2xl flex items-center space-x-6">
+                    <div class="p-4 bg-blue-50 text-blue-600 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <i data-lucide="calendar-check" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-semibold text-slate-800">Daily Closure</h2>
+                        <p class="text-slate-500 text-sm mt-1">Review end-of-day reports and totals.</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Phone Case Management Button -->
+            <a href="https://your-other-page.com/phone-cases" class="group card-hidden">
+                <div class="glass-card p-8 rounded-2xl flex items-center space-x-6">
+                    <div class="p-4 bg-purple-50 text-purple-600 rounded-xl group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <i data-lucide="smartphone" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-semibold text-slate-800">Phone Case Management</h2>
+                        <p class="text-slate-500 text-sm mt-1">Inventory and stock tracking.</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Device Booking Button -->
+            <a href="https://your-other-page.com/device-booking" class="group card-hidden">
+                <div class="glass-card p-8 rounded-2xl flex items-center space-x-6">
+                    <div class="p-4 bg-emerald-50 text-emerald-600 rounded-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                        <i data-lucide="book-open" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-semibold text-slate-800">Device Booking</h2>
+                        <p class="text-slate-500 text-sm mt-1">Manage appointments and repairs.</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- POS Button -->
+            <a href="https://your-other-page.com/pos" class="group card-hidden">
+                <div class="glass-card p-8 rounded-2xl flex items-center space-x-6">
+                    <div class="p-4 bg-orange-50 text-orange-600 rounded-xl group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                        <i data-lucide="shopping-cart" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-semibold text-slate-800">POS System</h2>
+                        <p class="text-slate-500 text-sm mt-1">Launch point of sale interface.</p>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer / Instructions -->
+        <footer class="mt-16 border-t border-slate-200 pt-8 animate__animated animate__fadeIn animate__delay-1s">
+            <div class="bg-slate-800 text-slate-300 p-6 rounded-xl text-sm">
+                <h3 class="text-white font-bold mb-2">GitHub Deployment Instructions:</h3>
+                <ul class="list-disc ml-5 space-y-1">
+                    <li>Replace the <code class="bg-slate-700 px-1 rounded">href</code> attributes with your actual URLs.</li>
+                    <li>Rename this file to <code class="bg-slate-700 px-1 rounded">index.html</code>.</li>
+                    <li>Upload it to a GitHub repository.</li>
+                    <li>Go to <strong>Settings > Pages</strong> and enable GitHub Pages for your main branch.</li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Staggered Entrance Animation using Animate.css classes
+        window.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.group');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.remove('card-hidden');
+                    card.classList.add('animate__animated', 'animate__fadeInUp');
+                }, index * 150);
+            });
+        });
+    </script>
+</body>
+</html>
