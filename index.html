@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Management Dashboard Hub</title>
-    <!-- Tailwind CSS for modern, utility-first styling -->
+    <title>Management Portal Hub</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons for clean, professional iconography -->
+
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Animate.css for high-quality, lightweight web animations -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
+
+    <!-- Animate.css -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background: radial-gradient(circle at top left, #f8fafc, #f1f5f9);
@@ -21,33 +25,36 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Prevent scrolling on the body */
+            overflow-x: hidden;
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            transition: all 0.25s ease;
         }
 
         .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
             border-color: #3b82f6;
         }
 
-        /* Initial state for JS-driven entrance animation */
-        .card-hidden {
-            opacity: 0;
-            transform: translateY(20px);
+        .glass-card:active {
+            transform: scale(0.98);
         }
 
-        /* Hover effect for the footer link */
+        .card-hidden {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
         .footer-link {
             position: relative;
             display: inline-block;
         }
+
         .footer-link::after {
             content: '';
             position: absolute;
@@ -60,103 +67,168 @@
             transform-origin: bottom right;
             transition: transform 0.25s ease-out;
         }
+
         .footer-link:hover::after {
             transform: scaleX(1);
             transform-origin: bottom left;
         }
+
+        /* Mobile-only safety tweaks (NO content change) */
+        @media (max-width: 640px) {
+            .glass-card {
+                padding: 0.75rem !important;
+            }
+        }
     </style>
 </head>
-<body class="p-4 md:p-6">
 
-    <div class="max-w-4xl w-full flex flex-col items-center">
-        <!-- Header Section -->
-        <header class="text-center mb-6 md:mb-10 animate__animated animate__fadeInDown">
-            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-2">Management Portal</h1>
-            <p class="text-slate-500 text-sm md:text-lg">Select a module to continue to your workspace</p>
-        </header>
+<body class="p-3 md:p-4">
 
-        <!-- Navigation Grid: Single column on mobile, two columns on desktop -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 w-full">
-            
-            <!-- Daily Closure Button -->
-            <a href="https://tanveerfixit.github.io/sale-closing/" class="group card-hidden">
-                <div class="glass-card p-4 md:p-8 rounded-2xl flex items-center space-x-4 md:space-x-6">
-                    <div class="p-3 md:p-4 bg-blue-50 text-blue-600 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                        <i data-lucide="calendar-check" class="w-6 h-6 md:w-8 md:h-8"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-lg md:text-xl font-semibold text-slate-800">Daily Closure</h2>
-                        <p class="hidden md:block text-slate-500 text-sm mt-1">Review end-of-day reports and totals.</p>
-                    </div>
+<div class="max-w-6xl w-full flex flex-col items-center">
+
+    <!-- Header -->
+    <header class="text-center mb-4 md:mb-10 animate__animated animate__fadeInDown">
+        <h1 class="text-2xl md:text-5xl font-bold text-slate-900 tracking-tight mb-1 md:mb-3">
+            Management Portal
+        </h1>
+        <p class="text-slate-500 text-xs md:text-lg">
+            Select a module to continue
+        </p>
+    </header>
+
+    <!-- Grid -->
+    <div
+        class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 w-full
+       max-h-[calc(100vh-160px)] md:max-h-none
+       overflow-y-auto md:overflow-visible
+       pt-2 pr-1 md:pr-0"
+
+        <!-- Daily Closure -->
+        <a href="https://tanveerfixit.github.io/sale-closing/" class="group card-hidden">
+            <div class="glass-card p-3 md:p-6 rounded-xl md:rounded-2xl flex flex-col md:flex-row
+                        items-center space-y-2 md:space-y-0 md:space-x-4 text-center md:text-left">
+                <div class="p-3 bg-blue-50 text-blue-600 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <i data-lucide="calendar-check" class="w-6 h-6"></i>
                 </div>
-            </a>
-
-            <!-- Phone Case Management Button -->
-            <a href="https://tanveerfixit.github.io/phone-case-order/" class="group card-hidden">
-                <div class="glass-card p-4 md:p-8 rounded-2xl flex items-center space-x-4 md:space-x-6">
-                    <div class="p-3 md:p-4 bg-purple-50 text-purple-600 rounded-xl group-hover:bg-purple-600 group-hover:text-white transition-colors">
-                        <i data-lucide="smartphone" class="w-6 h-6 md:w-8 md:h-8"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-lg md:text-xl font-semibold text-slate-800">Phone Cases</h2>
-                        <p class="hidden md:block text-slate-500 text-sm mt-1">Inventory and stock tracking.</p>
-                    </div>
+                <div>
+                    <h2 class="text-sm md:text-lg font-bold text-slate-800">Daily Closure</h2>
+                    <p class="hidden md:block text-slate-500 text-xs mt-1">End-of-day reports.</p>
                 </div>
-            </a>
+            </div>
+        </a>
 
-            <!-- Device Booking Button -->
-            <a href="https://your-other-page.com/device-booking" class="group card-hidden">
-                <div class="glass-card p-4 md:p-8 rounded-2xl flex items-center space-x-4 md:space-x-6">
-                    <div class="p-3 md:p-4 bg-emerald-50 text-emerald-600 rounded-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                        <i data-lucide="book-open" class="w-6 h-6 md:w-8 md:h-8"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-lg md:text-xl font-semibold text-slate-800">Device Booking</h2>
-                        <p class="hidden md:block text-slate-500 text-sm mt-1">Manage appointments and repairs.</p>
-                    </div>
+        <!-- Device Booking -->
+        <a href="https://your-other-page.com/device-booking" class="group card-hidden">
+            <div class="glass-card p-3 md:p-6 rounded-xl md:rounded-2xl flex flex-col md:flex-row
+                        items-center space-y-2 md:space-y-0 md:space-x-4 text-center md:text-left">
+                <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                    <i data-lucide="book-open" class="w-6 h-6"></i>
                 </div>
-            </a>
-
-            <!-- POS Button -->
-            <a href="https://your-other-page.com/pos" class="group card-hidden">
-                <div class="glass-card p-4 md:p-8 rounded-2xl flex items-center space-x-4 md:space-x-6">
-                    <div class="p-3 md:p-4 bg-orange-50 text-orange-600 rounded-xl group-hover:bg-orange-600 group-hover:text-white transition-colors">
-                        <i data-lucide="shopping-cart" class="w-6 h-6 md:w-8 md:h-8"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-semibold text-slate-800">POS System</h2>
-                        <p class="hidden md:block text-slate-500 text-sm mt-1">Launch point of sale interface.</p>
-                    </div>
+                <div>
+                    <h2 class="text-sm md:text-lg font-bold text-slate-800">Device Booking</h2>
+                    <p class="hidden md:block text-slate-500 text-xs mt-1">Manage appointments.</p>
                 </div>
-            </a>
+            </div>
+        </a>
 
-        </div>
+        <!-- POS System -->
+        <a href="https://your-other-page.com/pos" class="group card-hidden">
+            <div class="glass-card p-3 md:p-6 rounded-xl md:rounded-2xl flex flex-col md:flex-row
+                        items-center space-y-2 md:space-y-0 md:space-x-4 text-center md:text-left">
+                <div class="p-3 bg-orange-50 text-orange-600 rounded-xl group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                    <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h2 class="text-sm md:text-lg font-bold text-slate-800">POS System</h2>
+                    <p class="hidden md:block text-slate-500 text-xs mt-1">Point of sale interface.</p>
+                </div>
+            </div>
+        </a>
 
-        <!-- Animated Footer -->
-        <footer class="mt-8 md:mt-16 text-center animate__animated animate__fadeInUp animate__delay-1s">
-            <p class="text-slate-400 text-xs md:text-sm font-medium tracking-wide">
-                Created By 
-                <a href="https://wa.me/353892541111" target="_blank" class="footer-link text-blue-600 font-bold ml-1 hover:text-blue-700 transition-colors">
-                    Tanveer Ahmad
-                </a>
-            </p>
-        </footer>
+        <!-- Phone Case Order -->
+        <a href="https://tanveerfixit.github.io/phone-case-order/" class="group card-hidden">
+            <div class="glass-card p-3 md:p-6 rounded-xl md:rounded-2xl flex flex-col md:flex-row
+                        items-center space-y-2 md:space-y-0 md:space-x-4 text-center md:text-left">
+                <div class="p-3 bg-purple-50 text-purple-600 rounded-xl group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                    <i data-lucide="smartphone" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h2 class="text-sm md:text-lg font-bold text-slate-800">Case Order</h2>
+                    <p class="hidden md:block text-slate-500 text-xs mt-1">Manage case stock.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- Screen Protector Ordering -->
+        <a href="#" class="group card-hidden">
+            <div class="glass-card p-3 md:p-6 rounded-xl md:rounded-2xl flex flex-col md:flex-row
+                        items-center space-y-2 md:space-y-0 md:space-x-4 text-center md:text-left">
+                <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h2 class="text-sm md:text-lg font-bold text-slate-800">Glass Order</h2>
+                    <p class="hidden md:block text-slate-500 text-xs mt-1">Order protective films.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- Case Compatibility -->
+        <a href="#" class="group card-hidden">
+            <div class="glass-card p-3 md:p-6 rounded-xl md:rounded-2xl flex flex-col md:flex-row
+                        items-center space-y-2 md:space-y-0 md:space-x-4 text-center md:text-left">
+                <div class="p-3 bg-rose-50 text-rose-600 rounded-xl group-hover:bg-rose-600 group-hover:text-white transition-colors">
+                    <i data-lucide="search" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h2 class="text-sm md:text-lg font-bold text-slate-800">Case Finder</h2>
+                    <p class="hidden md:block text-slate-500 text-xs mt-1">Find compatible cases.</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- Protector Compatibility -->
+        <a href="#" class="group card-hidden">
+            <div class="glass-card p-3 md:p-6 rounded-xl md:rounded-2xl flex flex-col md:flex-row
+                        items-center space-y-2 md:space-y-0 md:space-x-4 text-center md:text-left">
+                <div class="p-3 bg-cyan-50 text-cyan-600 rounded-xl group-hover:bg-cyan-600 group-hover:text-white transition-colors">
+                    <i data-lucide="layers" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h2 class="text-sm md:text-lg font-bold text-slate-800">Glass Finder</h2>
+                    <p class="hidden md:block text-slate-500 text-xs mt-1">Find glass compatibility.</p>
+                </div>
+            </div>
+        </a>
+
     </div>
 
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+    <!-- Footer -->
+    <footer class="mt-4 md:mt-12 text-center animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="text-slate-400 text-xs md:text-sm font-medium">
+            Created By
+            <a href="https://wa.me/353892541111" target="_blank"
+               class="footer-link text-blue-600 font-bold ml-1 hover:text-blue-700">
+                Tanveer Ahmad
+            </a>
+        </p>
+    </footer>
 
-        // Staggered Entrance Animation using Animate.css classes
-        window.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.group');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.remove('card-hidden');
-                    card.classList.add('animate__animated', 'animate__fadeInUp');
-                }, index * 100);
-            });
+</div>
+
+<script>
+    lucide.createIcons();
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.group');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.remove('card-hidden');
+                card.classList.add('animate__animated', 'animate__fadeInUp');
+            }, index * 60);
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
